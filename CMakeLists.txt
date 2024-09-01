@@ -4,6 +4,6 @@ set (projectName "HomeCookingManager")
 
 project(${projectName})
 
-set (SOURCES main.cpp)
+set (source_files "main.cpp")
 
-add_executable(${projectName} SOURCES)
+add_executable(${projectName} ${source_files})
