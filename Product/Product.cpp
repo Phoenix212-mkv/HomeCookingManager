@@ -6,7 +6,7 @@ Product::Product(string name, string unit, double amount)
 	unit_ = unit;
 	amount_ = amount;
 }
-Product::Product(Product& p)
+Product::Product(const Product& p)
 {
 	name_ = p.name_;
 	unit_ = p.unit_;
@@ -37,4 +37,9 @@ void Product::setUnit(string unit)
 void Product::setAmount(double amount)
 {
 	amount_ = amount;
+}
+
+bool Product::operator ==(const Product& p)
+{
+	return (name_ == p.name_) && (unit_ == p.unit_);
 }
