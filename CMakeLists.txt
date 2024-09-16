@@ -1,13 +1,13 @@
 cmake_minimum_required(VERSION 3.28)
 
-set (projectName "HomeCookingManager")
+set (project_name "HomeCookingManager")
 
-project(${projectName})
+project(${project_name})
 
 add_subdirectory(Product)
 
-set (source_files "main.cpp")
+set (source_files "main.cpp" )
 
-add_executable(${projectName} ${source_files})
+add_executable(${project_name} ${source_files})
 
-target_link_libraries(${projectName} Product)
+target_link_libraries(${project_name} Product)
