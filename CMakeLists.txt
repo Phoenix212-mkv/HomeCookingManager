@@ -1,13 +1,17 @@
 cmake_minimum_required(VERSION 3.28)
 
-set (project_name "HomeCookingManager")
+set(PROJECT_NAME HomeCookingManager)
 
-project(${project_name})
+project(${PROJECT_NAME})
+
+# Установка стандарта C++17
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set (SOURCES main.cpp "Functions.cpp")
 
 add_subdirectory(Manager)
 
-set (source_files "main.cpp" )
+add_executable(${PROJECT_NAME} ${SOURCES})
 
-add_executable(${project_name} ${source_files})
-
-target_link_libraries(${project_name} Manager)
+target_link_libraries(${PROJECT_NAME} Manager)

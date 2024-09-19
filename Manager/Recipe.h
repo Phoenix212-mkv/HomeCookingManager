@@ -2,31 +2,41 @@
 #define RECIPE_H
 
 #include <string>
-#include <vector>
-#include<map>
-class Recipe {
+#include <map>
+
+class Recipe
+{
 private:
     int id_;
     std::string name_;
     std::string instructions_;
     std::map<int, double> ingredients_; // {productId, quantity}
+
 public:
-    Recipe(int id, const std::string& name, const std::string& instructions)
-        : id_(id), name_(name), instructions_(instructions) {}
+    Recipe(int id, const std::string& name, const std::string& instructions, const std::map<int, double>& ingredients = {});
 
-    int getId() const { return id_; }
-    std::string getName() const { return name_; }
-    std::string getInstructions() const { return instructions_; }
+    // Геттеры
+    int getId() const;
+    std::string getName() const;
+    std::string getInstructions() const;
+    const std::map<int, double>& getIngredients() const;
 
-    void addIngredient(int productId, double quantity) {
-        ingredients_[productId] = quantity;
+    void clearIngredients() {
+        ingredients_.clear();
     }
 
-    const std::map<int, double>& getIngredients() const {
-        return ingredients_;
-    }
+    // Редактирование рецепта
+    void addIngredient(int productId, double quantity);
+    void removeIngredient(int productId);
+    void setName(const std::string& name);
+    void setInstructions(const std::string& instructions);
 
+    // Получение ингредиентов для определенного количества порций
+    std::map<int, double> getIngredientsForPortions(int portions) const;
 
+    // Печать информации о рецепте
+    void printRecipe(const std::map<int, std::string>& productNames,
+        const std::map<int, std::string>& productUnits) const;
 };
 
 #endif // RECIPE_H
